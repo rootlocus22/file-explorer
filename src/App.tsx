@@ -1,24 +1,80 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import FileExplorer, {Node} from './FileExplorer';
 
 function App() {
+  // Sample data for the file explorer
+  const fileData: Node = {
+    type: "folder",
+    name: "parent",
+    data: [
+      {
+        type: "folder",
+        name: "root",
+        data: [
+          {
+            type: "folder",
+            name: "src",
+            data: [
+              {
+                type: "file",
+                meta: 'js',
+                name: "index.js"
+              }
+            ]
+          },
+          {
+            type: "folder",
+            name: "public",
+            data: [
+              {
+                type: "file",
+                meta: 'ts',
+                name: "index.ts"
+              }
+            ]
+          },
+          {
+            type: "file",
+            meta: 'html',
+            name: "index.html"
+          },
+          {
+            type: "folder",
+            name: "data",
+            data: [
+              {
+                type: "folder",
+                name: "images",
+                data: [
+                  {
+                    type: "file",
+                    meta: 'img',
+                    name: "image.png"
+                  },
+                  {
+                    type: "file",
+                    meta: 'img',
+                    name: "image2.webp"
+                  }
+                ]
+              },
+              {
+                type: "file",
+                meta: 'svg',
+                name: "logo.svg"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>File Explorer</h1>
+      <FileExplorer data={fileData} />
     </div>
   );
 }
